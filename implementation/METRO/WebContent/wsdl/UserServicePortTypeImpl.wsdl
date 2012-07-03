@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://userservice" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://userservice" xmlns:intf="http://userservice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://userservice" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <element name="getUserInfo">
+    <complexType>
+     <sequence>
+      <element name="body" type="impl:UserInfoRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="UserInfoRequest">
+    <sequence>
+     <element name="username" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="getUserInfoResponse">
+    <complexType>
+     <sequence>
+      <element name="getUserInfoReturn" type="impl:UserInfo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="UserInfo">
+    <sequence>
+     <element name="age" nillable="true" type="xsd:integer"/>
+     <element name="firstname" nillable="true" type="xsd:string"/>
+     <element name="gender" type="xsd:boolean"/>
+     <element name="lastname" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="createGroup">
+    <complexType>
+     <sequence>
+      <element name="body" type="impl:GroupCreationRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="GroupCreationRequest">
+    <sequence>
+     <element name="groupname" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="createGroupResponse">
+    <complexType>
+     <sequence>
+      <element name="createGroupReturn" type="impl:GroupCreationResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="GroupCreationResponse">
+    <sequence>
+     <element name="response" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+   <element name="getGroupInfo">
+    <complexType>
+     <sequence>
+      <element name="body" type="impl:GroupInfoRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="GroupInfoRequest">
+    <sequence>
+     <element name="groupname" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="getGroupInfoResponse">
+    <complexType>
+     <sequence>
+      <element name="getGroupInfoReturn" type="impl:GroupInfoResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_anyType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <complexType name="GroupInfoResponse">
+    <sequence>
+     <element name="userlist" nillable="true" type="impl:ArrayOf_xsd_anyType"/>
+    </sequence>
+   </complexType>
+   <element name="deleteGroup">
+    <complexType>
+     <sequence>
+      <element name="body" type="impl:GroupDeletionRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="GroupDeletionRequest">
+    <sequence>
+     <element name="groupname" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="deleteGroupResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteGroupReturn" type="impl:GroupDeletionResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="GroupDeletionResponse">
+    <sequence>
+     <element name="response" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+   <element name="createUser">
+    <complexType>
+     <sequence>
+      <element name="body" type="impl:UserCreationRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="UserCreationRequest">
+    <sequence>
+     <element name="age" nillable="true" type="xsd:integer"/>
+     <element name="firstname" nillable="true" type="xsd:string"/>
+     <element name="gender" type="xsd:boolean"/>
+     <element name="lastname" nillable="true" type="xsd:string"/>
+     <element name="username" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="createUserResponse">
+    <complexType>
+     <sequence>
+      <element name="createUserReturn" type="impl:UserCreationResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="UserCreationResponse">
+    <sequence>
+     <element name="response" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+   <element name="deleteUser">
+    <complexType>
+     <sequence>
+      <element name="body" type="impl:UserDeletionRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="UserDeletionRequest">
+    <sequence>
+     <element name="username" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="deleteUserResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteUserReturn" type="impl:UserDeletionResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="UserDeletionResponse">
+    <sequence>
+     <element name="response" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+   <element name="groupAddUser">
+    <complexType>
+     <sequence>
+      <element name="body" type="impl:GroupAddUserRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="GroupAddUserRequest">
+    <sequence>
+     <element name="groupname" nillable="true" type="xsd:string"/>
+     <element name="username" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="groupAddUserResponse">
+    <complexType>
+     <sequence>
+      <element name="groupAddUserReturn" type="impl:GroupAddUserResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="GroupAddUserResponse">
+    <sequence>
+     <element name="response" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+   <element name="groupDeleteUser">
+    <complexType>
+     <sequence>
+      <element name="body" type="impl:GroupDeleteUserRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="GroupDeleteUserRequest">
+    <sequence>
+     <element name="groupname" nillable="true" type="xsd:string"/>
+     <element name="username" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="groupDeleteUserResponse">
+    <complexType>
+     <sequence>
+      <element name="groupDeleteUserReturn" type="impl:GroupDeleteUserResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="GroupDeleteUserResponse">
+    <sequence>
+     <element name="response" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://xml.apache.org/xml-soap" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://userservice"/>
+   <complexType name="Vector">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getGroupInfoResponse">
+
+      <wsdl:part element="impl:getGroupInfoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createUserResponse">
+
+      <wsdl:part element="impl:createUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteGroupResponse">
+
+      <wsdl:part element="impl:deleteGroupResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="groupAddUserResponse">
+
+      <wsdl:part element="impl:groupAddUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserInfoRequest">
+
+      <wsdl:part element="impl:getUserInfo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getGroupInfoRequest">
+
+      <wsdl:part element="impl:getGroupInfo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserInfoResponse">
+
+      <wsdl:part element="impl:getUserInfoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteGroupRequest">
+
+      <wsdl:part element="impl:deleteGroup" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createGroupRequest">
+
+      <wsdl:part element="impl:createGroup" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="groupDeleteUserRequest">
+
+      <wsdl:part element="impl:groupDeleteUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="groupAddUserRequest">
+
+      <wsdl:part element="impl:groupAddUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createUserRequest">
+
+      <wsdl:part element="impl:createUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteUserResponse">
+
+      <wsdl:part element="impl:deleteUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="groupDeleteUserResponse">
+
+      <wsdl:part element="impl:groupDeleteUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteUserRequest">
+
+      <wsdl:part element="impl:deleteUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createGroupResponse">
+
+      <wsdl:part element="impl:createGroupResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="UserServicePortTypeImpl">
+
+      <wsdl:operation name="getUserInfo">
+
+         <wsdl:input message="impl:getUserInfoRequest" name="getUserInfoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getUserInfoResponse" name="getUserInfoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createGroup">
+
+         <wsdl:input message="impl:createGroupRequest" name="createGroupRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createGroupResponse" name="createGroupResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getGroupInfo">
+
+         <wsdl:input message="impl:getGroupInfoRequest" name="getGroupInfoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getGroupInfoResponse" name="getGroupInfoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteGroup">
+
+         <wsdl:input message="impl:deleteGroupRequest" name="deleteGroupRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteGroupResponse" name="deleteGroupResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createUser">
+
+         <wsdl:input message="impl:createUserRequest" name="createUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createUserResponse" name="createUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteUser">
+
+         <wsdl:input message="impl:deleteUserRequest" name="deleteUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteUserResponse" name="deleteUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="groupAddUser">
+
+         <wsdl:input message="impl:groupAddUserRequest" name="groupAddUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:groupAddUserResponse" name="groupAddUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="groupDeleteUser">
+
+         <wsdl:input message="impl:groupDeleteUserRequest" name="groupDeleteUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:groupDeleteUserResponse" name="groupDeleteUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="UserServicePortTypeImplSoapBinding" type="impl:UserServicePortTypeImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getUserInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUserInfoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUserInfoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createGroup">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createGroupRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createGroupResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getGroupInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getGroupInfoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getGroupInfoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteGroup">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteGroupRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteGroupResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="groupAddUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="groupAddUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="groupAddUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="groupDeleteUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="groupDeleteUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="groupDeleteUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="UserServicePortTypeImplService">
+
+      <wsdl:port binding="impl:UserServicePortTypeImplSoapBinding" name="UserServicePortTypeImpl">
+
+         <wsdlsoap:address location="http://localhost:9000/METRO_USER_SERVICE/services/UserServicePortTypeImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,83 @@
+Time: 1 Minute
+1 request = 8 web service calls
+
+gSOAP
+Requests/s	AvgTime/Req		RAM		CPU		DiscardedReq
+ 50			10				272KB 	10		0
+ 60			10				272KB	12		0
+ 70			11				272KB	14		0
+ 80			11				272KB	16		0
+ 90			11				272KB	19		0
+100			11				272KB	22		0
+120			12				272KB	26		0
+140			12				272KB	32		0
+160			13				272KB	38		0
+200			16				272KB	48		0
+250			25				272KB	60		0
+300			179				272KB	100		0
+320			339				272KB	104		561
+
+
+CXF
+Requests/s	AvgTime/Req		RAM		CPU		DiscardedReq
+50			14				255MB	37		0
+80			16				322MB	48		0
+120			17				555MB	74		0
+150			17				544MB	84		0
+160			18				862MB	96		0
+200			17				870MB	97		0
+250			18				875MB	94		0
+300			22				875MB	96		0
+320			23				871MB	100		0
+400			203				874MB	130		0
+430			242				873MB	142		746
+
+
+Metro
+Requests/s	AvgTime/Req		RAM		CPU		DiscardedReq
+50			16				578MB	22		0
+80			19				588MB	37		0
+120			16				583MB	50		0
+150			17				588MB	52		0
+160			17				595MB	50		0
+200			18				597MB	65		0
+250			22				597MB	78		0
+300			23				597MB	83		0
+320			25				597MB	92		0
+400			188				597MB	92		0
+430			234				597MB	94		1959
+
+
+Axis2
+Requests/s	AvgTime/Req		RAM		CPU		DiscardedReq
+50			16				89MB	18		0
+80			17				90MB	30		0
+120			17				98MB	55		0
+150			17				107MB	66		0
+160			17				116MB	69		0
+200			18				131MB	76		0
+250			19				124MB	81		0
+300			22				127MB	84		0
+320			26				127MB	86		0
+400			61				302MB	84		23846
+
+
+PHP
+Requests/s	AvgTime/Req		RAM		CPU		DiscardedReq
+50			42				39MB	52		0
+80			595				25MB	200		0
+120			1512			180MB	200		2294
+
+
+WCF
+Requests/s	AvgTime/Req		RAM		CPU		DiscardedReq
+50			17				8MB		18		0
+80			18				8MB		20		0
+120			18				8MB		22		0
+160			18				8MB		28		0
+200			17				8MB		24		0
+250			17				8MB		25		0
+300			21				8MB		29		0
+320			38				10MB	31		0
+400			226				9MB		37		0
+430			249				9MB		42		1455

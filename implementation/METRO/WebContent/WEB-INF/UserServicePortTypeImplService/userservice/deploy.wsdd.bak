@@ -1,0 +1,313 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from UserServicePortTypeImplService WSDL service -->
+
+  <service name="UserServicePortTypeImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://userservice"/>
+      <parameter name="wsdlServiceElement" value="UserServicePortTypeImplService"/>
+      <parameter name="schemaQualified" value="http://xml.apache.org/xml-soap,http://userservice"/>
+      <parameter name="wsdlServicePort" value="UserServicePortTypeImpl"/>
+      <parameter name="className" value="userservice.UserServicePortTypeImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="UserServicePortTypeImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getUserInfo" qname="operNS:getUserInfo" xmlns:operNS="http://userservice" returnQName="retNS:getUserInfoReturn" xmlns:retNS="http://userservice" returnType="rtns:UserInfo" xmlns:rtns="http://userservice" soapAction="" >
+        <parameter qname="pns:body" xmlns:pns="http://userservice" type="tns:UserInfoRequest" xmlns:tns="http://userservice"/>
+      </operation>
+      <operation name="createGroup" qname="operNS:createGroup" xmlns:operNS="http://userservice" returnQName="retNS:createGroupReturn" xmlns:retNS="http://userservice" returnType="rtns:GroupCreationResponse" xmlns:rtns="http://userservice" soapAction="" >
+        <parameter qname="pns:body" xmlns:pns="http://userservice" type="tns:GroupCreationRequest" xmlns:tns="http://userservice"/>
+      </operation>
+      <operation name="getGroupInfo" qname="operNS:getGroupInfo" xmlns:operNS="http://userservice" returnQName="retNS:getGroupInfoReturn" xmlns:retNS="http://userservice" returnType="rtns:GroupInfoResponse" xmlns:rtns="http://userservice" soapAction="" >
+        <parameter qname="pns:body" xmlns:pns="http://userservice" type="tns:GroupInfoRequest" xmlns:tns="http://userservice"/>
+      </operation>
+      <operation name="deleteGroup" qname="operNS:deleteGroup" xmlns:operNS="http://userservice" returnQName="retNS:deleteGroupReturn" xmlns:retNS="http://userservice" returnType="rtns:GroupDeletionResponse" xmlns:rtns="http://userservice" soapAction="" >
+        <parameter qname="pns:body" xmlns:pns="http://userservice" type="tns:GroupDeletionRequest" xmlns:tns="http://userservice"/>
+      </operation>
+      <operation name="createUser" qname="operNS:createUser" xmlns:operNS="http://userservice" returnQName="retNS:createUserReturn" xmlns:retNS="http://userservice" returnType="rtns:UserCreationResponse" xmlns:rtns="http://userservice" soapAction="" >
+        <parameter qname="pns:body" xmlns:pns="http://userservice" type="tns:UserCreationRequest" xmlns:tns="http://userservice"/>
+      </operation>
+      <operation name="deleteUser" qname="operNS:deleteUser" xmlns:operNS="http://userservice" returnQName="retNS:deleteUserReturn" xmlns:retNS="http://userservice" returnType="rtns:UserDeletionResponse" xmlns:rtns="http://userservice" soapAction="" >
+        <parameter qname="pns:body" xmlns:pns="http://userservice" type="tns:UserDeletionRequest" xmlns:tns="http://userservice"/>
+      </operation>
+      <operation name="groupAddUser" qname="operNS:groupAddUser" xmlns:operNS="http://userservice" returnQName="retNS:groupAddUserReturn" xmlns:retNS="http://userservice" returnType="rtns:GroupAddUserResponse" xmlns:rtns="http://userservice" soapAction="" >
+        <parameter qname="pns:body" xmlns:pns="http://userservice" type="tns:GroupAddUserRequest" xmlns:tns="http://userservice"/>
+      </operation>
+      <operation name="groupDeleteUser" qname="operNS:groupDeleteUser" xmlns:operNS="http://userservice" returnQName="retNS:groupDeleteUserReturn" xmlns:retNS="http://userservice" returnType="rtns:GroupDeleteUserResponse" xmlns:rtns="http://userservice" soapAction="" >
+        <parameter qname="pns:body" xmlns:pns="http://userservice" type="tns:GroupDeleteUserRequest" xmlns:tns="http://userservice"/>
+      </operation>
+      <parameter name="allowedMethods" value="createUser createGroup groupDeleteUser getUserInfo groupAddUser deleteGroup getGroupInfo deleteUser"/>
+
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:>getUserInfoResponse"
+        type="java:userservice.GetUserInfoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:GroupInfoRequest"
+        type="java:userservice.GroupInfoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:UserDeletionResponse"
+        type="java:userservice.UserDeletionResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:>deleteUserResponse"
+        type="java:userservice.DeleteUserResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:GroupDeleteUserRequest"
+        type="java:userservice.GroupDeleteUserRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:GroupDeletionRequest"
+        type="java:userservice.GroupDeletionRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:>deleteGroupResponse"
+        type="java:userservice.DeleteGroupResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:GroupCreationRequest"
+        type="java:userservice.GroupCreationRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:UserInfoRequest"
+        type="java:userservice.UserInfoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:GroupAddUserRequest"
+        type="java:userservice.GroupAddUserRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://userservice"
+        qname="ns:ArrayOf_xsd_anyType"
+        type="java:java.lang.Object[]"
+        innerType="cmp-ns:anyType" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:>getGroupInfo"
+        type="java:userservice.GetGroupInfo"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:>createGroup"
+        type="java:userservice.CreateGroup"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:>createUser"
+        type="java:userservice.CreateUser"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:UserCreationRequest"
+        type="java:userservice.UserCreationRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:>createGroupResponse"
+        type="java:userservice.CreateGroupResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:UserInfo"
+        type="java:userservice.UserInfo"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:GroupDeleteUserResponse"
+        type="java:userservice.GroupDeleteUserResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:>groupDeleteUserResponse"
+        type="java:userservice.GroupDeleteUserResponseType1"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:>groupDeleteUser"
+        type="java:userservice.GroupDeleteUser"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:>groupAddUser"
+        type="java:userservice.GroupAddUser"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:>deleteGroup"
+        type="java:userservice.DeleteGroup"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:>createUserResponse"
+        type="java:userservice.CreateUserResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:GroupAddUserResponse"
+        type="java:userservice.GroupAddUserResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:UserDeletionRequest"
+        type="java:userservice.UserDeletionRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:UserCreationResponse"
+        type="java:userservice.UserCreationResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:GroupCreationResponse"
+        type="java:userservice.GroupCreationResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:>getGroupInfoResponse"
+        type="java:userservice.GetGroupInfoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:>getUserInfo"
+        type="java:userservice.GetUserInfo"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:GroupInfoResponse"
+        type="java:userservice.GroupInfoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:>deleteUser"
+        type="java:userservice.DeleteUser"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:GroupDeletionResponse"
+        type="java:userservice.GroupDeletionResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://userservice"
+        qname="ns:>groupAddUserResponse"
+        type="java:userservice.GroupAddUserResponseType0"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

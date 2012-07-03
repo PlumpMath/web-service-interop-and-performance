@@ -1,0 +1,5 @@
+C:\Users\felix\ux52cixo-web-services\implementation\WCF_USERSERVICE\WCF_USERSERVICE\bin\Release\WCF_USERSERVICE.exe
+C:\Users\felix\ux52cixo-web-services\implementation\WCF_USERSERVICE\WCF_USERSERVICE\bin\Release\WCF_USERSERVICE.pdb
+C:\Users\felix\ux52cixo-web-services\implementation\WCF_USERSERVICE\WCF_USERSERVICE\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\felix\ux52cixo-web-services\implementation\WCF_USERSERVICE\WCF_USERSERVICE\obj\x86\Release\WCF_USERSERVICE.exe
+C:\Users\felix\ux52cixo-web-services\implementation\WCF_USERSERVICE\WCF_USERSERVICE\obj\x86\Release\WCF_USERSERVICE.pdb
