@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file was auto-generated from WSDL -->
+<!-- by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST) -->
+<serviceGroup>
+    <service name="UserService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="localhost.userservice_wsdl.UserServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">localhost.userservice_wsdl.UserServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="DeleteGroup" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://localhost:9000/userservice.wsdl">
+            <actionMapping>http://localhost:9000/DeleteGroup</actionMapping>
+            <outputActionMapping>http://localhost:9000/userservice.wsdl/UserServicePortType/DeleteGroupResponse</outputActionMapping>
+        </operation>
+        <operation name="CreateUser" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://localhost:9000/userservice.wsdl">
+            <actionMapping>http://localhost:9000/CreateUser</actionMapping>
+            <outputActionMapping>http://localhost:9000/userservice.wsdl/UserServicePortType/CreateUserResponse</outputActionMapping>
+        </operation>
+        <operation name="GetGroupInfo" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://localhost:9000/userservice.wsdl">
+            <actionMapping>http://localhost:9000/GetGroupInfo</actionMapping>
+            <outputActionMapping>http://localhost:9000/userservice.wsdl/UserServicePortType/GetGroupInfoResponse</outputActionMapping>
+        </operation>
+        <operation name="CreateGroup" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://localhost:9000/userservice.wsdl">
+            <actionMapping>http://localhost:9000/CreateGroup</actionMapping>
+            <outputActionMapping>http://localhost:9000/userservice.wsdl/UserServicePortType/CreateGroupResponse</outputActionMapping>
+        </operation>
+        <operation name="GetUserInfo" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://localhost:9000/userservice.wsdl">
+            <actionMapping>http://localhost:9000/GetUserInfo</actionMapping>
+            <outputActionMapping>http://localhost:9000/userservice.wsdl/UserServicePortType/GetUserInfoResponse</outputActionMapping>
+        </operation>
+        <operation name="GroupAddUser" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://localhost:9000/userservice.wsdl">
+            <actionMapping>http://localhost:9000/GroupAddUser</actionMapping>
+            <outputActionMapping>http://localhost:9000/userservice.wsdl/UserServicePortType/GroupAddUserResponse</outputActionMapping>
+        </operation>
+        <operation name="GroupDeleteUser" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://localhost:9000/userservice.wsdl">
+            <actionMapping>http://localhost:9000/GroupDeleteUser</actionMapping>
+            <outputActionMapping>http://localhost:9000/userservice.wsdl/UserServicePortType/GroupDeleteUserResponse</outputActionMapping>
+        </operation>
+        <operation name="DeleteUser" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://localhost:9000/userservice.wsdl">
+            <actionMapping>http://localhost:9000/DeleteUser</actionMapping>
+            <outputActionMapping>http://localhost:9000/userservice.wsdl/UserServicePortType/DeleteUserResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

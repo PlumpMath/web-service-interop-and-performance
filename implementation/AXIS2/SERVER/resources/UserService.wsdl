@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="UserService" targetNamespace="http://localhost:9000/userservice.wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost:9000/userservice.wsdl" xmlns:xsd1="http://localhost:9000/userservice.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <schema targetNamespace="http://localhost:9000/userservice.xsd" xmlns="http://www.w3.org/2001/XMLSchema">
+           
+           <!-- Get User Information -->
+           <!-- input: username -->  
+           <element name="UserInfoRequest">
+              <complexType>
+                  <all>
+                      <element name="username" type="string"/>
+                  </all>
+              </complexType>
+           </element>
+           
+           <!-- output: first name, last name, gender, age -->
+           <element name="UserInfo">
+              <complexType>
+                  <all>
+                  		<element name="firstname" type="string"/>
+                  		<element name="lastname" type="string"/>
+                      <element name="gender" type="boolean"/>
+                      <element name="age" type="integer"/>
+                  </all>
+              </complexType>
+           </element>
+           
+           
+           <!-- Delete User -->
+           <!-- input: username -->
+           <element name="UserDeletionRequest">
+           		<complexType>
+           			<all>
+           					<element name="username" type="string"/>
+           			</all>
+           		</complexType>
+           </element>
+           
+           <!-- output: response boolean -->
+           <element name="UserDeletionResponse">
+           		<complexType>
+           			<all>
+           					<element name="response" type="boolean"/>
+           			</all>
+           		</complexType>
+           </element>
+           
+           
+           <!-- Create User -->
+           <!-- input: user name, first name, last name, age, gender -->
+           <element name="UserCreationRequest">
+           		<complexType>
+           			<all>
+           					<element name="username" type="string"/>
+           					<element name="firstname" type="string"/>
+           					<element name="lastname" type="string"/>
+           					<element name="gender" type="boolean"/>
+           					<element name="age" type="integer"/>
+           			</all>
+           		</complexType>
+           </element>
+           
+           <!-- output: response boolean -->
+           <element name="UserCreationResponse">
+           		<complexType>
+           			<all>
+           					<element name="response" type="boolean"/>
+           			</all>
+           		</complexType>
+           </element>
+           
+           
+           <!-- Create Group -->
+           <!-- input: group name -->
+           <element name="GroupCreationRequest">
+           		<complexType>
+           			<all>
+           					<element name="groupname" type="string"/>
+           			</all>
+           		</complexType>
+           </element>
+           
+           <!-- output: response boolean -->
+           <element name="GroupCreationResponse">
+           		<complexType>
+           			<all>
+           					<element name="response" type="boolean"/>
+           			</all>
+           		</complexType>
+           </element>
+           
+           
+           <!-- Delete Group -->
+           <!-- input: group name -->
+           <element name="GroupDeletionRequest">
+           		<complexType>
+           			<all>
+           					<element name="groupname" type="string"/>
+           			</all>
+           		</complexType>
+           </element>
+           
+           <!-- output: response boolean -->
+           <element name="GroupDeletionResponse">
+           		<complexType>
+           			<all>
+           					<element name="response" type="boolean"/>
+           			</all>
+           		</complexType>
+           	</element>
+           	
+           	
+           	<!-- Add User to Group -->
+           	<!-- input: user name, group name -->
+           	<element name="GroupAddUserRequest">
+           		<complexType>
+           			<all>
+           					<element name="username" type="string"/>
+           					<element name="groupname" type="string"/>
+           			</all>
+           		</complexType>
+           	</element>
+           	
+           	<!-- output: response boolean -->
+           	<element name="GroupAddUserResponse">
+           		<complexType>
+           			<all>
+           				<element name="response" type="boolean"/>
+           			</all>
+           		</complexType>
+           	</element>
+           	
+           	
+           	<!-- Delete User From Group -->
+           	<!-- input: user name, group name -->
+           	<element name="GroupDeleteUserRequest">
+           		<complexType>
+           			<all>
+           					<element name="username" type="string"/>
+           					<element name="groupname" type="string"/>
+           			</all>
+           		</complexType>
+           	</element>
+           	
+           	<!-- output: response boolean -->
+           	<element name="GroupDeleteUserResponse">
+           		<complexType>
+           			<all>
+           					<element name="response" type="boolean"/>
+           			</all>
+           		</complexType>
+           	</element>
+           	
+           	
+           	<!-- Get Group Information -->
+           	<!-- input: group name -->
+           	<element name="GroupInfoRequest">
+           		<complexType>
+           			<all>
+           					<element name="groupname" type="string"/>
+           			</all>
+           		</complexType>
+           	</element>
+           	
+           	<!-- output: list of users -->
+           	<element name="GroupInfoResponse">
+           		<complexType>
+           			<sequence>
+           				<element maxOccurs="unbounded" minOccurs="0" name="userlist" type="string"/>
+           			</sequence>
+           		</complexType>
+           	</element>
+       </schema>
+  </types>
+  <message name="CreateGroupInput">
+    <part name="body" element="xsd1:GroupCreationRequest">
+    </part>
+  </message>
+  <message name="CreateUserInput">
+    <part name="body" element="xsd1:UserCreationRequest">
+    </part>
+  </message>
+  <message name="GetGroupInfoInput">
+    <part name="body" element="xsd1:GroupInfoRequest">
+    </part>
+  </message>
+  <message name="DeleteUserOutput">
+    <part name="body" element="xsd1:UserDeletionResponse">
+    </part>
+  </message>
+  <message name="GroupDeleteUserInput">
+    <part name="body" element="xsd1:GroupDeleteUserRequest">
+    </part>
+  </message>
+  <message name="DeleteGroupInput">
+    <part name="body" element="xsd1:GroupDeletionRequest">
+    </part>
+  </message>
+  <message name="CreateGroupOutput">
+    <part name="body" element="xsd1:GroupCreationResponse">
+    </part>
+  </message>
+  <message name="GetUserInfoInput">
+    <part name="body" element="xsd1:UserInfoRequest">
+    </part>
+  </message>
+  <message name="CreateUserOutput">
+    <part name="body" element="xsd1:UserCreationResponse">
+    </part>
+  </message>
+  <message name="GetGroupInfoOutput">
+    <part name="body" element="xsd1:GroupInfoResponse">
+    </part>
+  </message>
+  <message name="GroupAddUserInput">
+    <part name="body" element="xsd1:GroupAddUserRequest">
+    </part>
+  </message>
+  <message name="DeleteGroupOutput">
+    <part name="body" element="xsd1:GroupDeletionResponse">
+    </part>
+  </message>
+  <message name="GroupAddUserOutput">
+    <part name="body" element="xsd1:GroupAddUserResponse">
+    </part>
+  </message>
+  <message name="GetUserInfoOutput">
+    <part name="body" element="xsd1:UserInfo">
+    </part>
+  </message>
+  <message name="GroupDeleteUserOutput">
+    <part name="body" element="xsd1:GroupDeleteUserResponse">
+    </part>
+  </message>
+  <message name="DeleteUserInput">
+    <part name="body" element="xsd1:UserDeletionRequest">
+    </part>
+  </message>
+  <portType name="UserServicePortType">
+    <operation name="GetUserInfo">
+      <input message="tns:GetUserInfoInput">
+    </input>
+      <output message="tns:GetUserInfoOutput">
+    </output>
+    </operation>
+    <operation name="DeleteUser">
+      <input message="tns:DeleteUserInput">
+    </input>
+      <output message="tns:DeleteUserOutput">
+    </output>
+    </operation>
+    <operation name="CreateUser">
+      <input message="tns:CreateUserInput">
+    </input>
+      <output message="tns:CreateUserOutput">
+    </output>
+    </operation>
+    <operation name="CreateGroup">
+      <input message="tns:CreateGroupInput">
+    </input>
+      <output message="tns:CreateGroupOutput">
+    </output>
+    </operation>
+    <operation name="DeleteGroup">
+      <input message="tns:DeleteGroupInput">
+    </input>
+      <output message="tns:DeleteGroupOutput">
+    </output>
+    </operation>
+    <operation name="GroupAddUser">
+      <input message="tns:GroupAddUserInput">
+    </input>
+      <output message="tns:GroupAddUserOutput">
+    </output>
+    </operation>
+    <operation name="GroupDeleteUser">
+      <input message="tns:GroupDeleteUserInput">
+    </input>
+      <output message="tns:GroupDeleteUserOutput">
+    </output>
+    </operation>
+    <operation name="GetGroupInfo">
+      <input message="tns:GetGroupInfoInput">
+    </input>
+      <output message="tns:GetGroupInfoOutput">
+    </output>
+    </operation>
+  </portType>
+  <binding name="UserServiceSoapBinding" type="tns:UserServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="GetUserInfo">
+      <soap:operation soapAction="http://localhost:9000/GetUserInfo"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="DeleteUser">
+      <soap:operation soapAction="http://localhost:9000/DeleteUser"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="CreateUser">
+      <soap:operation soapAction="http://localhost:9000/CreateUser"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="CreateGroup">
+      <soap:operation soapAction="http://localhost:9000/CreateGroup"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="DeleteGroup">
+      <soap:operation soapAction="http://localhost:9000/DeleteGroup"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GroupAddUser">
+      <soap:operation soapAction="http://localhost:9000/GroupAddUser"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GroupDeleteUser">
+      <soap:operation soapAction="http://localhost:9000/GroupDeleteUser"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetGroupInfo">
+      <soap:operation soapAction="http://localhost:9000/GetGroupInfo"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="UserService">
+<documentation>An example user service.</documentation>
+    <port name="UserServicePort" binding="tns:UserServiceSoapBinding">
+      <soap:address location="http://localhost:9000/userservice"/>
+    </port>
+  </service>
+</definitions>
